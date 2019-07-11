@@ -1,0 +1,73 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h2>Randoms</h2>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Solo</th>
+            <th>Terrible</th>
+            <th>Very Bad</th>
+            <th>Bad</th>
+            <th>Moderate</th>
+            <th>Good</th>
+            <th>Very Good</th>
+            <th>Excellent</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for solo in solosr %}
+            <tr>
+              <td><strong>{{ solo.soloname }}</strong></td>
+              <td>{{ solo.terrible }}</td>
+              <td>{{ solo.verybad }}</td>
+              <td>{{ solo.bad }}</td>
+              <td>{{ solo.moderate }}</td>
+              <td>{{ solo.good }}</td>
+              <td>{{ solo.verygood }}</td>
+              <td>{{ solo.excellent }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+      <h2>AllRules</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Solo</th>
+            <th>Terrible</th>
+            <th>Very Bad</th>
+            <th>Bad</th>
+            <th>Moderate</th>
+            <th>Good</th>
+            <th>Very Good</th>
+            <th>Excellent</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for solo in solosa %}
+            <tr>
+              <td><strong>{{ solo.soloname }}</strong></td>
+              <td>{{ solo.terrible }}</td>
+              <td>{{ solo.verybad }}</td>
+              <td>{{ solo.bad }}</td>
+              <td>{{ solo.moderate }}</td>
+              <td>{{ solo.good }}</td>
+              <td>{{ solo.verygood }}</td>
+              <td>{{ solo.excellent }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
+{% include "footer.html" %}

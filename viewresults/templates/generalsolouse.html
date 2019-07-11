@@ -1,0 +1,24 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h1>{{ usetype }} use</h1> 
+
+      <strong><a href="{{ baseUrl }}csvfiles/{{ csvfile }}">Download in csv format</a></strong>     
+
+      <div id="rand-use-solo">
+        <h3>Random</h3>
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ randuse }}" />
+      </div>
+      <div id="allrules-use-solo">
+        <h3>AllRules</h3>
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ allrulesuse }}" />
+      </div>
+
+    </div>
+
+{% include "footer.html" %}

@@ -1,0 +1,56 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h1>{{ musician.user.username|capfirst }}'s contest list</h1>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Contest</th>
+            <th>Solo random</th>
+            <th>Solo all rules</th>
+            <th>Winner</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contest in contests %}
+            <tr>
+              <td><strong>{{ contest.id }}</strong></td>
+              <td>{{ contest.solo_one }}</td>
+              <td>{{ contest.solo_two }}</td>
+              <td>{{ contest.get_winner_display }}</td>
+              <td>
+                <a id="playcontest" class="playcontest" href="/results/playcontest/{{ contest.id }}/">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}           
+        </tbody>
+      </table>
+    </div>
+
+    <div id="show-selected-contest" >
+      <div id="show-solo-random">
+        <h3>Solo Random</h3>
+          <audio id="audio-solo-random" controls>
+            <source src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+      </div>
+      <div id="show-solo-full">
+        <h3>Solo All rules</h3>
+          <audio id="audio-solo-allrules" controls>
+            <source src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+      </div>
+    </div>
+
+{% include "footer.html" %}

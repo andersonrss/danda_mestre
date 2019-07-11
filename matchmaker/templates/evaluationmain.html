@@ -1,0 +1,75 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      <h1>Solos evaluation</h1>
+      <div id="alerts"></div>
+      <form action="/contest/evaluate/" method="post" id="evaluateform">
+        {% csrf_token %}
+        <input type="hidden" id="evaluationtype" name="evaluationtype" value="{{ solo.get_solo_type }}" />
+        <input type="hidden" id="evaluationid" name="evaluationid" value="{{ solo.id }}" />
+        <p class="show-count">{{ remaining_count }} of 6</p>
+        <div id="evaluated-solo" class="solo-container">
+        <h2>Solo</h2>
+          <audio id="audio-solo" controls>
+            <source src="{{ baseUrl }}{{ solo.get_dir }}/{{ solo.solo }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <br />
+          <div id="solo-rating-options">
+            <h3>Enjoyment</h3>
+            
+            <label>
+              <input type="radio" class="solo-rate" name="solo-rate" value="1" >1</input>
+            </label>
+            <label>
+              <input type="radio" class="solo-rate" name="solo-rate" value="2" >2</input>
+            </label>
+            <label>
+              <input type="radio" class="solo-rate" name="solo-rate" value="3" >3</input>
+            </label>
+            <label>
+              <input type="radio" class="solo-rate" name="solo-rate" value="4" >4</input>
+            </label>
+            <label>
+              <input type="radio" class="solo-rate" name="solo-rate" value="5" >5</input>
+            </label>
+            <label>
+              <input type="radio" class="solo-rate" name="solo-rate" value="6" >6</input>
+            </label>
+            <label>
+              <input type="radio" class="solo-rate" name="solo-rate" value="7" >7</input>
+            </label>
+
+            <div id="labels-subtitle">
+                <strong><span class="label-span">(Not at all)</span> <span class="label-span">(Moderate)</span> <span class="label-span">(Very much)</span></strong>
+            </div>
+          </div>
+
+          <p class="check-use-solo">
+            This could be used in a song or in a live performance.<br />
+            <label>
+              <input type="radio" id="usesolo" name="usesolo" value="1">Yes</input>
+            </label>
+            <label>
+              <input type="radio" id="usesolo" name="usesolo" value="0">No</input>
+            </label>
+          </p>
+        </div>
+
+        <div id="ipt-submit">
+          <input id="sbt-solo-eval" class="btn btn-default" type="submit" value="Submit!">
+        </div>
+      </form>
+
+      <div id="div-refresh-btn">
+        <button id="refresh-button" type="button" class="btn btn-default" aria-label="Left Align" 
+        data-toggle="tooltip" data-placement="bottom" title="Load a new match">Next contest</button>
+      </div>
+
+    </div>
+
+{% include "footer.html" %}

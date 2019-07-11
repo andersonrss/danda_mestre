@@ -1,0 +1,58 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h2>{{ musician.user.username|capfirst }}'s solos evaluations list</h2>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Solo</th>
+            <th>Rating</th>
+            <th>Play</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in randoms %}
+            <tr>
+              <td><strong>{{ r.id }}</strong></td>
+              <td>{{ r.solo }}</td>
+              <td>{{ r.get_rating_display }}</td>
+              <td>
+                <a id="playsolo" class="playsolo" href="/results/playrandsolo/{{ r.id }}/">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+
+          {% for a in allrules %}
+            <tr>
+              <td><strong>{{ a.id }}</strong></td>
+              <td>{{ a.solo }}</td>
+              <td>{{ a.get_rating_display }}</td>
+              <td>
+                <a id="playsolo" class="playsolo" href="/results/playallrulesolo/{{ a.id }}/">
+                  <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                </a>
+              </td>
+            </tr>
+          {% endfor %}         
+        </tbody>
+      </table>
+    </div>
+
+    <div id="show-selected-solo" >
+        <h3>Solo</h3>
+          <audio id="audio-solo" controls>
+            <source src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+    </div>
+
+{% include "footer.html" %}

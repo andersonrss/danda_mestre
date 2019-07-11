@@ -1,0 +1,25 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h1>{{ type }} evaluations</h1>
+      <p><strong>Total {{ type }}: </strong> {{ bcount }}</p>
+
+
+      <div id="randoms-eval-chart">
+        <h3>Randoms evaluation</h3>
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.randchart }}" />
+      </div>
+
+      <div id="allrules-eval-chart">
+        <h3>AllRules evaluation</h3>
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.allruleschart }}" />
+      </div>
+
+    </div>
+
+{% include "footer.html" %}

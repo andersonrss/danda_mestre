@@ -1,0 +1,46 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      <h1>Solos Evaluation - Sobre</h1>
+
+      <p>
+        Nesta pesquisa você vai ouvir alguns curtos solos de guitarra. Estes solos possuem o mesmo final, mas o início e meio são diferentes. Sua tarefa é simplesmente escutar cuidadosamente e avaliar o quanto você gostou da música.
+      </p>
+      <p>
+        Após o fim de cada solo, é necessário indicar sua satisfação utilizando a escala que vai de 1 (Não gostei, absolutamente) à 7 (Gostei bastante). Fique a vontade para usar toda a variação da escala da forma que achar mais adequado. 
+      </p>
+      <p>
+        Esta pesquisa demora aproximadamente 5 minutos para ser concluída.
+      </p>
+      <p>
+        Obrigado por participar.
+      </p>
+
+      <br /><br />
+      <hr />
+      <br /><br />
+
+      <h1>Solos Evaluation - About</h1>
+
+      <p>
+        In this study, you will be hearing short guitar solos. These solos have the same ending, but are different in the beginning and middle part.  Your task is simply to listen carefully and rate how well you like the music. 
+      </p>
+      <p>
+        After each solo has finished playing, you will be asked to indicate your enjoyment of that excerpt on a rating scale from 1 (Not at all) to 7 (Very much). Please use the entire range of the scale as you find appropriate. 
+      </p>
+      <p>
+        The study takes approximately 5 minutes to complete.
+      </p>
+      <p>
+        Thank you for volunteering to participate!
+      </p>
+
+      <button id="go-to-evals"  class="btn btn-info" type="submit">Go to solos.</button>
+
+    </div>
+
+{% include "footer.html" %}

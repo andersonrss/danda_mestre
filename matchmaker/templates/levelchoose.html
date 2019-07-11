@@ -1,0 +1,26 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      <h1>Solos Contest</h1>
+      <form action="." method="post" id="levelchooseform">
+        {% csrf_token %}
+        <div id="musician-level-choices">
+          <h3>Hi, {{ user|capfirst }}, please choose your level as a musician</h2>
+          <div id="alerts"></div>
+          <input type="radio" id="musicianlevel-begginer" name="musicianlevel" value="b" >Beginner</input>
+          <input type="radio" id="musicianlevel-intermediate" name="musicianlevel" value="i" >Intermediate</input>
+          <input type="radio" id="musicianlevel-pro" name="musicianlevel" value="p" >Professional</input>
+        </div>
+
+        <div id="div-levelnxt-btn">
+          <button id="lvlnxt-btn" class="btn btn-default" type="button" title="next">Next</button>
+        </div>
+      </form>
+
+    </div>
+
+{% include "footer.html" %}

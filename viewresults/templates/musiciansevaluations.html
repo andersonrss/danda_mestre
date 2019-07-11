@@ -1,0 +1,100 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h1>By Musicians</h1>
+      <div id="affix-tabs">
+        <ul id="resulttabs" class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#randoms" aria-controls="randoms" role="tab" data-toggle="tab">Randoms</a></li>
+          <li role="presentation"><a href="#allrules" aria-controls="allrules" role="tab" data-toggle="tab">AllRules</a></li>
+        </ul>
+      </div>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="randoms">
+        <h3>Randoms evaluations</h3>
+        <table class="table table-striped table-evals">
+          <tr>
+            <thead>
+              <th>#</th>
+              <th>Terribles</th>
+              <th>Very Bad</th>
+              <th>Bad</th>
+              <th>Moderate</th>
+              <th>Good</th>
+              <th>Very Good</th>
+              <th>Excellent</th>
+              <th>Unevaluated</th>
+            </thead>
+            <tbody>
+              {% for r in rand_evaluations %}
+                <tr>
+                  <td><strong><a href="/results/musiciansevaluations/{{ r.musid }}">{{ forloop.counter }}-{{ r.musname|capfirst }}</a></strong></td>
+                  <td>{{ r.terribles }}</td>
+                  <td>{{ r.verybads }}</td>
+                  <td>{{ r.bads }}</td>
+                  <td>{{ r.moderates }}</td>
+                  <td>{{ r.goods }}</td>
+                  <td>{{ r.verygoods }}</td>
+                  <td>{{ r.excellents }}</td>
+                  <td>{{ r.unevaluateds }}</td>
+                </tr>
+              {% endfor %}         
+            </tbody>
+          </tr>
+        </table>
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="allrules">
+        <h3>AllRules evaluations</h3>
+        <table class="table table-striped table-evals">
+          <tr>
+            <thead>
+              <th>#</th>
+              <th>Terribles</th>
+              <th>Very Bad</th>
+              <th>Bad</th>
+              <th>Moderate</th>
+              <th>Good</th>
+              <th>Very Good</th>
+              <th>Excellent</th>
+              <th>Unevaluated</th>
+            </thead>
+            <tbody>
+              {% for a in allrules_evaluations %}
+                <tr>
+                  <td><strong><a href="/results/musiciansevaluations/{{ a.musid }}">{{ forloop.counter }}-{{ a.musname|capfirst }}</a></strong></td>
+                  <td>{{ a.terribles }}</td>
+                  <td>{{ a.verybads }}</td>
+                  <td>{{ a.bads }}</td>
+                  <td>{{ a.moderates }}</td>
+                  <td>{{ a.goods }}</td>
+                  <td>{{ a.verygoods }}</td>
+                  <td>{{ a.excellents }}</td>
+                  <td>{{ a.unevaluateds }}</td>
+                </tr>
+              {% endfor %}         
+            </tbody>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
+      <div id="randoms-eval-chart">
+        <h3>Randoms Evaluation</h3>
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ random_eval_chart }}" />
+      </div>
+
+      <div id="allrules-eval-chart">
+        <h3>AllRules Evaluation</h3>
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ allrules_eval_chart }}" />
+      </div>
+
+    </div>
+
+{% include "footer.html" %}

@@ -1,0 +1,23 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h1>By solo use</h1>
+
+
+      <div id="usecharts">
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.beginner_random_use_chart }}" />
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.beginner_allrules_use_chart }}" />
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.intermediate_random_use_chart }}" />
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.intermediate_allrules_use_chart }}" />
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.professional_random_use_chart }}" />
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ charts.professional_allrules_use_chart }}" />
+      </div>
+
+    </div>
+
+{% include "footer.html" %}

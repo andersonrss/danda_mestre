@@ -1,0 +1,1 @@
+<div id="div-logout-link"><p>{{ user|capfirst }} | <a href="{% url "index" %}">first page</a> | <a id="logout-link" href="{% url "changepassword" %}">change password</a> | {% if user.is_staff %}<a href="{% url "addmusician" %}">add musician</a> | <a href="{% url "resultindex" %}">results</a>{% endif %} | <a id="logout-link" href="{% url "logout" %}">logout</a></p></div>

@@ -1,0 +1,52 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      <h1>Solos Contest</h1>
+      <form action="." method="post" id="mainform">  
+        {% csrf_token %}
+        <input type="hidden" id="matchtype" name="matchtype" value="{{ contest.get_match_type }}-{{ contest.id }}" />
+        <p class="show-count">{{ remaining_count }} of 6</p>
+        <div id="solo-um" class="solo-container">
+        <h2>Solo 1</h2>
+          <audio id="audio-solo-one" controls>
+            <source src="{{ baseUrl }}{{ contest.get_dir_solo_one }}/{{ contest.solo_one }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <br />
+          <p class="check-use-solo">
+            <input type="checkbox" id="usefirst" name="usefirst" value="usefirst" />This could be used in a song or in a live performance.<br />
+          </p>
+          <button id="vote-on-first" type="button" class="like-button btn btn-default" aria-label="Left Align">Winner!</button>
+        </div>
+
+        <div id="div-draw-btn">
+          <button id="draw-btn" class="btn btn-default" type="button"
+          data-toggle="tooltip" data-placement="bottom" title="Click for a draw.">Draw</button>
+        </div>
+
+
+        <div id="solo-dois" class="solo-container">
+          <h2>Solo 2</h2>
+          <audio id="audio-solo-two" controls>
+            <source src="{{ baseUrl }}{{ contest.get_dir_solo_two }}/{{ contest.solo_two }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          <br />
+          <p class="check-use-solo">
+            <input type="checkbox" id="usesecond" name="usesecond" value="usesecond" />This could be used in a song or in a live performance.<br />
+          </p>
+          <button id="vote-on-second" type="button" class="like-button btn btn-default" aria-label="Left Align">Winner!</button>
+        </div>
+      </form>
+      <div id="div-refresh-btn">
+        <button id="refresh-button" type="button" class="btn btn-default" aria-label="Left Align" 
+        data-toggle="tooltip" data-placement="bottom" title="Load a new match">Next contest</button>
+      </div>
+
+    </div>
+
+{% include "footer.html" %}

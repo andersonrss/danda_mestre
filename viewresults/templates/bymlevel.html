@@ -1,0 +1,44 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h1>By Musicians Level</h1>
+
+      <table id="table-by-mlevel" class="table table-striped">
+        <tr>
+          <thead>
+            <th>#</th>
+            <th>All rules</th>
+            <th>Random</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Beginner</strong></td>
+              <td>{{ bwins.ballruleswins }}</td>
+              <td>{{ bwins.brandwins }}</td>
+            </tr>
+            <tr>
+              <td><strong>Intermediate</strong></td>
+              <td>{{ intwins.intallruleswins }}</td>
+              <td>{{ intwins.intrandwins }}</td>
+            </tr>
+            <tr>
+              <td><strong>Professional</strong></td>
+              <td>{{ prowins.proallruleswins }}</td>
+              <td>{{ prowins.prorandwins }}</td>
+            </tr>            
+          </tbody>
+        </tr>
+      </table>
+
+      <div id="mlevel-chart">
+        <embed type="image/svg+xml" src="{{ baseUrl }}charts/{{ chart_name }}" />
+      </div>
+
+    </div>
+
+{% include "footer.html" %}

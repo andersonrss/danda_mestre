@@ -1,0 +1,101 @@
+{% include "header.html" %}
+
+  {% load staticfiles %}
+  {% static "" as baseUrl %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      
+      <h2>Averages</h2>
+
+      <strong><a href="{{ baseUrl }}csvfiles/{{ csvfile }}">Download in csv format</a></strong> <br/><br/>
+      <strong><a href="{{ baseUrl }}csvfiles/{{ csvfile2 }}">Format: musician - level - difference (opt-rand) csv file</a></strong>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>AllRules Average</th>
+            <th>Randoms Average</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <h3>Beginners</h3>
+          {% for b in begaverages %}
+            <tr>
+              <td><strong>{{ b.musid }}-{{ b.musname }}</strong></td>
+              <td>{{ b.allrulesaverage }}</td>
+              <td>{{ b.randaverage }}</td>
+              <td>{{ b.get_difference }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+              <td></td>
+              <td>{{ allrulesbegavg }}</td>
+              <td>{{ randbegavg }}</td>
+              <td></td>
+            </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>AllRules Average</th>
+            <th>Randoms Average</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <h3>Intermediates</h3>
+          {% for i in interaverages %}
+            <tr>
+              <td><strong>{{ i.musid }}-{{ i.musname }}</strong></td>
+              <td>{{ i.allrulesaverage }}</td>
+              <td>{{ i.randaverage }}</td>
+              <td>{{ i.get_difference }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <td></td>
+            <td>{{ allrulesinteravg }}</td>
+            <td>{{ randinteravg }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>AllRules Average</th>
+            <th>Randoms Average</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          <h3>Professionals</h3>
+          {% for p in proaverages %}
+            <tr>
+              <td><strong>{{ p.musid }}-{{ p.musname }}</strong></td>
+              <td>{{ p.allrulesaverage }}</td>
+              <td>{{ p.randaverage }}</td>
+              <td>{{ p.get_difference }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <td></td>
+            <td>{{ allrulesproavg }}</td>
+            <td>{{ randproavg }}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+
+{% include "footer.html" %}

@@ -1,0 +1,30 @@
+{% include "header.html" %}
+  <body>
+    <div id="main-container">
+      {% include "usermenu.html" %}
+      <div id="add-musician-container">
+          {% if user.is_staff %}
+          <h1 id="title-add-musician">Add Musician</h1>
+          <div id="alerts"></div>
+          {% if addpasserror %}
+            <div class="alert alert-danger" id="change-error" role="alert">Something wrong. Blank or don't matching passwords</div>
+          {% endif %}
+          {% if addmus %}
+            <div class="alert alert-success" id="change-error" role="alert">Musician created.</div>
+          {% endif %}
+          <div id="add-user-container" class="form-group">
+            <form class="form-horizontal" method="post" action="{% url "addmusician" %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <input id="ipt-add-musician" type="submit" value="Add" class="btn btn-default" />
+            </form>
+          {% else %}
+            <h1>You don't have permission to access this page!</h1>
+            <p><a href="/contest/">Go to main page!</a></p>
+            <p>Or <a id="logout-link" href="{% url "logout" %}">logout</a> to enter as other user.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+{% include "footer.html" %}

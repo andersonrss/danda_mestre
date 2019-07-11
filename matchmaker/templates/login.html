@@ -1,0 +1,28 @@
+{% include "header.html" %}
+  <body>
+    <div id="main-container">
+      <div id="user-login-container">
+          {% if not user.is_authenticated %}
+          <h1>Login</h1>
+          {% if login_error %}
+          <div class="alert alert-danger" role="alert">Username or Password incorrect or account not available.</div>
+          {% endif %}
+          {% if passwordchanged %}
+          <div class="alert alert-success" role="alert">Password changed. Please login again.</div>
+          {% endif %}
+          <div class="form-group">
+            <form class="form-horizontal" method="post" action="/contest/login/">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <input type="submit" value="Login!" class="btn btn-default" />
+            </form>
+          {% else %}
+            <h1>You're Logged, {{ user|capfirst }}!</h1>
+            <p><a href="/contest/">Go to main page!</a></p>
+            <p>Or <a id="logout-link" href="{% url "logout" %}">logout</a> to enter as other user.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+{% include "footer.html" %}

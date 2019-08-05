@@ -5,11 +5,11 @@
   <body>
     <div id="main-container">
       {% include "usermenu.html" %}
-      <h1>Solos Contest</h1>
+      <h1>Solos Evaluation</h1>
       <form action="." method="post" id="levelchooseform">
         {% csrf_token %}
         <div id="musician-level-choices">
-          <h3>Hi, {{ user|capfirst }}, please choose your level as a musician</h2>
+          <h3>Hi, {{ user|capfirst }}, please choose your level as musician</h2>
           <div id="alerts"></div>
           <input type="radio" id="musicianlevel-begginer" name="musicianlevel" value="b" >Beginner</input>
           <input type="radio" id="musicianlevel-intermediate" name="musicianlevel" value="i" >Intermediate</input>

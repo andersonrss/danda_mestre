@@ -9,7 +9,7 @@
       <form action="." method="post" id="levelchooseform">
         {% csrf_token %}
         <div id="musician-level-choices">
-          <h3>Hi, {{ user|capfirst }}, please choose your level as musician</h2>
+          <h3>Hi, {{ user|capfirst }}, please choose the musician level that is closest to yours</h3>
           <div id="alerts"></div>
           <input type="radio" id="musicianlevel-begginer" name="musicianlevel" value="b" >Beginner</input>
           <input type="radio" id="musicianlevel-intermediate" name="musicianlevel" value="i" >Intermediate</input>
